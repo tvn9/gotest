@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	resp, err := http.Get("http://api.theysaidso.com/god.json")
+	resp, err := http.Get("http://api.theysaidso.com/qod")
 	if err != nil {
 		fmt.Println(err)
 		return
