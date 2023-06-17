@@ -19,7 +19,7 @@ func isPrime(n int) (bool, string) {
 
 	// negative number are not prime
 	if n < 0 {
-		return false, "Negative numbers are not prime, by definition!\n"
+		return false, fmt.Sprintf("%d negative numbers are not prime, by definition!\n", n)
 	}
 
 	// use the modulus operator repeatedly to use if we have a prime number

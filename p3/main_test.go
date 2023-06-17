@@ -1,4 +1,4 @@
-// Improve isPrime test
+// Improve isPrime test - with table test cases
 package main
 
 import (
