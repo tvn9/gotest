@@ -11,3 +11,4 @@
 #Out put of the go coverage tool
 .DS_Store
 .out
+resources

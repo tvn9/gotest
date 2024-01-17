@@ -14,7 +14,7 @@ func main() {
 func isPrime(n int) (bool, string) {
 	// 0 and 1 are not prime
 	if n == 0 || n == 1 {
-		return false, fmt.Sprintf("%d is not a prime.\n", n)
+		return false, fmt.Sprintf("%d is not a prime!\n", n)
 	}
 
 	// negative number is not prime
