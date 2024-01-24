@@ -10,6 +10,7 @@ type URL struct {
 	Host   string
 	Scheme string
 	Path   string
+	Port   string
 }
 
 // Parse parses raw url into a URL structure.
@@ -29,4 +30,8 @@ func Parse(url string) (*URL, error) {
 	}
 	fmt.Println(scheme, host, path)
 	return &URL{Host: host, Scheme: scheme, Path: path}, nil
+}
+
+func (p *URL) getPortN() string {
+	return p.Port
 }

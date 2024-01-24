@@ -5,7 +5,7 @@ import (
 )
 
 func TestParse(t *testing.T) {
-	var url = "https://twitter.com/anything"
+	const url = "https://twitter.com/anything"
 	u, err := Parse(url)
 	if err != nil {
 		t.Fatalf("Parse(%q) err = %q, want nil", url, err)
@@ -21,7 +21,10 @@ func TestParse(t *testing.T) {
 
 	if got, want := u.Path, "/anything"; got != want {
 		t.Errorf("Parse(%q), Path: %q, want: %q, got %q", url, u.Path, want, got)
-
 	}
+}
 
+func TestURLPort(t *testing.T) {
+	const url = "https://twitter.com:80"
+	u := &URL{Host: in}
 }
