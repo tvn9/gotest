@@ -5,6 +5,35 @@ import (
 	"testing"
 )
 
+func TestTable_isPrime(t *testing.T) {
+	primeTests := []struct {
+		name     string
+		testNum  int
+		expected bool
+		msg      string
+	}{
+		{"prime", 7, true, "7 is a prime number!\n"},
+		{"not prime", 8, false, "8 is not a prime number!\n"},
+	}
+
+	for _, e := range primeTests {
+		res, msg := isPrime(e.testNum)
+		if e.expected && !res {
+			t.Errorf("%s: expected true but got false", e.name)
+		} else {
+			fmt.Println("PASS")
+		}
+		if !e.expected && res {
+			t.Errorf("%s: expected false but got true", e.name)
+		} else {
+			fmt.Println("PASS")
+		}
+		if e.msg != msg {
+			t.Errorf("%s: expected %s but got %s", e.name, e.msg, msg)
+		}
+	}
+}
+
 func Test_isPrime(t *testing.T) {
 	n := 0
 	res, msg := isPrime(n)
