@@ -1,0 +1,12 @@
+mode: set
+gotest/prime/main.go:5.13,19.2 1 0
+gotest/prime/main.go:21.14,26.2 4 0
+gotest/prime/main.go:28.15,30.2 1 0
+gotest/prime/main.go:31.36,33.22 1 1
+gotest/prime/main.go:33.22,35.3 1 1
+gotest/prime/main.go:38.2,38.11 1 1
+gotest/prime/main.go:38.11,40.3 1 1
+gotest/prime/main.go:43.2,43.28 1 1
+gotest/prime/main.go:43.28,44.15 1 1
+gotest/prime/main.go:44.15,47.4 1 1
+gotest/prime/main.go:50.2,50.56 1 1

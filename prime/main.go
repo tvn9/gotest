@@ -1,16 +1,75 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strconv"
+	"strings"
+)
 
 func main() {
-	n := 2
+	// print a welcome message
+	intro()
 
-	_, msg := isPrime(n)
+	// create a channel to indicate when the user want to quit
+	doneChan := make(chan bool)
 
-	fmt.Println(msg)
+	// start a goroutine to read user input and run program
+	go readUserInput(doneChan)
+
+	// block until the doneChan gets a value
+	<-doneChan
+
+	// close the channel
+	close(doneChan)
+
+	// say goodbye
+	fmt.Println("Goodbye.")
 
 }
 
+func checkNumbers(scanner *bufio.Scanner) (string, bool) {
+	// read user input
+	scanner.Scan()
+
+	// check user input
+	if strings.EqualFold(scanner.Text(), "q") {
+		return "", true
+	}
+
+	numToCheck, err := strconv.Atoi(scanner.Text())
+	if err != nil {
+		return "Please enter a whole number!", false
+	}
+	_, msg := isPrime(numToCheck)
+	return msg, false
+
+}
+
+func readUserInput(doneChan chan bool) {
+	scanner := bufio.NewScanner(os.Stdin)
+	for {
+		res, done := checkNumbers(scanner)
+		if done {
+			doneChan <- true
+			return
+		}
+		fmt.Println(res)
+		prompt()
+	}
+}
+
+func intro() {
+	fmt.Println("Is it Prime?")
+	fmt.Println("------------")
+	fmt.Println("Enter a whole number, to test if it is a prime, or q to quite.")
+	prompt()
+}
+
+func prompt() {
+	fmt.Print("-> ")
+}
 func isPrime(n int) (bool, string) {
 	// 0 and 1 are not prime
 	if n == 0 || n == 1 {
